@@ -1,0 +1,8 @@
+Preliminary functions that will in the end be run once to create the system:
+selecting grammar to use
+convert grammar to CNF
+calculate probabilities for statistical aspect of parsing
+
+Primary functions that run the system:
+
+Postprocessing to get interesting data:
