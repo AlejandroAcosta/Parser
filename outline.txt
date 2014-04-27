@@ -6,3 +6,29 @@ calculate probabilities for statistical aspect of parsing
 Primary functions that run the system:
 
 Postprocessing to get interesting data:
+
+
+
+Pseudocode for conversion of CFG to CNF:
+for rule in grammar:
+  if rule contains nonterminal & terminal: // ie A->w B
+    create dummy nonterminal (Xi)
+    change rule to A->Xi B
+    create rule Xi->w
+    repeat for every word in the rule until it is just nonterminals
+
+for rule in grammar:
+  if rule's RHS's length > 2: // ie A0->A1 A2 A3 ... An
+    create dummy nonterminal (Yi)
+    create rule of form Yi->A1 A2
+    change rule to A0-> Yi A3 ... An
+    repeat until you're down to a bunch of rules of one nonterminal to 2 different ones
+
+for rule in grammar:
+  if rule's RHS has just one nonterminal: // ie A -> B
+    delete rule
+    for every valid rule with B as RHS: // ie B->w or B-> C1 C2
+      add rule for A->w or A->C1 C2 
+    
+
+We'll need to add some way to store the old rules so that we can convert the parse tree at the end back to its original form. I'm not sure how to do it for unit productions at the end.
